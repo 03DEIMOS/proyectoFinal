@@ -16,6 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //Llamada al método connect
 const db = require("./app/models");
+
 db.mongoose
     .connect(db.url, {
         useNewUrlParser: true,
@@ -42,3 +43,7 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
+
+//Login Nuevo
+require('./app/routes/auth.routes')(app);
+require('./app/routes/user.routes')(app);
